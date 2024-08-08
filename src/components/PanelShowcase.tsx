@@ -1,6 +1,8 @@
 import clsx from 'clsx';
+import React from 'react';
+import { PanelProps } from '@homework-task/types/interfaces';
 
-export const PanelShowcase = ({ items }) => {
+export const PanelShowcase = ({ items }: PanelProps) => {
     return (
         <div className={clsx('flex', 'justify-center', 'items-center')}>
             <div

@@ -1,13 +1,15 @@
 import './styles.css';
 
-import { Landing } from './components/landing/Landing.jsx';
+import React from 'react';
 
-function App() {
+import { Landing } from '@homework-task/components/landing/Landing';
+
+const App = () => {
     return (
         <main>
             <Landing />
         </main>
     );
-}
+};
 
 export default App;

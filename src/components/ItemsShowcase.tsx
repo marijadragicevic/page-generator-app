@@ -1,4 +1,7 @@
-export const ItemsShowcase = ({ items }) => {
+import React from 'react';
+import { ItemShowcaseProps } from '@homework-task/types/interfaces';
+
+export const ItemsShowcase = ({ items }: ItemShowcaseProps) => {
     return (
         <div className="flex justify-center items-center">
             <div className="grid grid-cols-2 gap-8 w-8/12">
