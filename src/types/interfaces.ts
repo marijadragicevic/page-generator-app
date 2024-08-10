@@ -1,3 +1,4 @@
+import { AxisProps } from '@mui/material/Slider/useSlider.types';
 import { MouseEventHandler, ReactNode } from 'react';
 
 export interface HeroProps {
@@ -42,10 +43,21 @@ export interface ButtonProps {
 export interface CardType {
     title: string;
     text: string;
-    link: string;
+    link?: string;
 }
 
 export interface LayoutProps {
     children: ReactNode;
     background: string;
+}
+export interface ColDefType {
+    fieldName: string;
+    headerName?: string;
+    align?: 'center' | 'left' | 'right' | 'inherit' | 'justify' | undefined;
+}
+export interface ColDefsType {
+    colDefs: ColDefType[];
+}
+export interface ListProps extends ColDefsType {
+    getList: () => void;
 }

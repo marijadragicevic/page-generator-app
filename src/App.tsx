@@ -2,14 +2,10 @@ import './styles.css';
 
 import React from 'react';
 
-import { Landing } from '@homework-task/components/landing/Landing';
+import { DefaultRouter } from '@homework-task//routes/DefaultRouter';
 
 const App = () => {
-    return (
-        <main>
-            <Landing />
-        </main>
-    );
+    return <DefaultRouter />;
 };
 
 export default App;
