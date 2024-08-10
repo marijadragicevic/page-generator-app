@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
+
 import {
     ListItem,
     ListItemButton,
@@ -15,7 +16,7 @@ export const NavbarItem = ({
     open: boolean;
     icon: any;
     title: string;
-    onClick: any;
+    onClick: MouseEventHandler;
 }) => {
     return (
         <ListItem disablePadding sx={{ display: 'block' }}>

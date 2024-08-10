@@ -1,10 +1,23 @@
-import { Button, Paper, TableContainer, Typography } from '@mui/material';
-import { Box } from '@mui/material';
+import * as React from 'react';
+
+import { Button, Box, Paper, TableContainer, TableHead, TableRow, Typography, ButtonProps, TableContainerProps } from '@mui/material';
 import MuiDrawer from '@mui/material/Drawer';
 import { styled } from '@mui/material/styles';
 
 import { closedMixin, openedMixin } from './styleMixins';
+import noDataImg from '../../public/media/404-img.svg';
 import catImg from '../../public/media/hero.png';
+
+// Style interfaces
+interface StyledButtonProps extends ButtonProps {
+    href?: string;
+    target?: string;
+}
+
+interface StyledTableContainerProps extends TableContainerProps {
+    component?: React.ElementType;
+    elevation: number;
+}
 
 export const StyledBackground = styled(Paper)(({ theme }) => ({
     flexGrow: 1,
@@ -63,12 +76,15 @@ export const Accent = styled('span')(({ theme }) => ({
     margin: theme.spacing(0.5),
 }));
 
-export const StyledButton = styled(Button)({
+export const StyledButton = styled(Button)<StyledButtonProps>(() => ({
     textTransform: 'none',
     backgroundColor: '#5C62F9',
-});
+    '&:hover': {
+        backgroundColor: '#4B52D4',
+    },
+}));
 
-export const StyledTableContainer = styled(TableContainer)({
+export const StyledTableContainer = styled(TableContainer)<StyledTableContainerProps>(() => ({
     '&::-webkit-scrollbar': {
         width: '5px',
         height: '5px',
@@ -77,10 +93,45 @@ export const StyledTableContainer = styled(TableContainer)({
         backgroundColor: '#F2F3F5',
     },
     '&::-webkit-scrollbar-thumb': {
-        backgroundColor: '#CCCED5',
+        backgroundColor: '#5C62F9',
         borderRadius: '8px',
     },
-});
+}));
+
+export const StyledTableHeader = styled(TableHead)(() => ({
+    '& th': {
+        backgroundColor: 'rgba(209,221,241)',
+        fontWeight: 700,
+    },
+}));
+
+export const StyledTableRow = styled(TableRow)(() => ({
+    '&:nth-of-type(even)': {
+        backgroundColor: 'rgb(232, 237, 242)',
+    },
+    '&:last-child td, &:last-child th': {
+        border: 0,
+    },
+}));
+
+// No data
+export const NoDataBox = styled(Paper)(({ theme }) => ({
+    padding: theme.spacing(6),
+    minHeight: '400px',
+    width: '80%',
+    height: '80%',
+    display: 'flex',
+    alignItems: 'flex-end',
+    justifyContent: 'center',
+    color: '#5C62F9 !important',
+    fontWeight: 'bold',
+    margin: theme.spacing(0.5),
+    backgroundImage: `url(${noDataImg})`,
+    backgroundRepeat: `no-repeat`,
+    backgroundPosition: `center`,
+    backgroundSize: `contain 50%`,
+    backgroundColor: 'rgba(209,221,241,0.8)',
+}));
 
 // Navbar Styles
 

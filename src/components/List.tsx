@@ -1,125 +1,99 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 
-import styled from '@emotion/styled';
-import { StyledTableContainer } from '@homework-task/layout/styled';
+import { Loading } from '@homework-task/components/Loading';
+import { useAsyncService } from '@homework-task/hooks/useAsyncService';
+import {
+    NoDataBox,
+    StyledTableContainer,
+    StyledTableHeader,
+    StyledTableRow,
+} from '@homework-task/layout/styled';
 import { ListProps } from '@homework-task/types/interfaces';
 import {
     Paper,
     Table,
     TableBody,
     TableCell,
-    TableHead,
     TableRow,
     Tooltip,
+    Typography,
 } from '@mui/material';
+import { v4 as uuidv4 } from 'uuid';
 
-function createData(
-    name: string,
-    calories: number,
-    fat: number,
-    carbs: number,
-    protein: number
-) {
-    return { name, calories, fat, carbs, protein };
-}
+export const List = <T extends Record<string, string | number>>({
+    colDefs,
+    getList,
+}: ListProps<T>) => {
+    // Custom hook for fetching data
+    const {
+        isLoading,
+        isError,
+        data: rowData,
+        fetchData,
+    } = useAsyncService<T[]>();
 
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
-const TableHeader = styled(TableHead)(({ theme }) => ({
-    '& th': {
-        backgroundColor: 'rgba(209,221,241)',
-        fontWeight: 700,
-    },
-}));
-
-const StyleTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(even)': {
-        backgroundColor: 'rgb(232, 237, 242)',
-    },
-    '& td': {},
-    '&:last-child td, &:last-child th': {
-        border: 0,
-    },
-}));
-
-export const List = ({ colDefs, getList }: ListProps) => {
-    const [rowData, setRowData] = useState([]);
-
-    const getRowData = async () => {
-        try {
-            const response = await getList();
-        } catch (error) {
-            console.log(error);
-        }
-    };
+    useEffect(() => {
+        fetchData(getList);
+    }, []);
 
     return (
-        <StyledTableContainer
-            sx={{ flex: '0 0 80%', height: 'auto', maxHeight: '80%' }}
-            component={Paper}
-            elevation={5}
-        >
-            <Table stickyHeader={true} aria-label="sticky table">
-                <TableHeader>
-                    <TableRow>
-                        {colDefs?.length > 0 &&
-                            colDefs?.map((colDef, index) => {
-                                return (
-                                    <TableCell
-                                        key={index}
-                                        align={colDef?.align || 'left'}
-                                    >
-                                        {colDef?.headerName ||
-                                            colDef?.fieldName}
-                                    </TableCell>
-                                );
-                            })}
-                    </TableRow>
-                </TableHeader>
-                <TableBody>
-                    {rowData?.length > 0 &&
-                        rowData?.map((row, index) => {
-                            return (
-                                <StyleTableRow key={index}>
+        <>
+            {isLoading && <Loading />}
+            {rowData && rowData.length > 0 ? (
+                <StyledTableContainer
+                    sx={{ flex: '0 0 80%', height: 'auto', maxHeight: '80%' }}
+                    component={Paper}
+                    elevation={5}
+                >
+                    <Table stickyHeader={true} aria-label="sticky table">
+                        <StyledTableHeader>
+                            <TableRow>
+                                {colDefs?.length > 0 &&
+                                    colDefs.map((colDef, index) => (
+                                        <TableCell
+                                            key={index}
+                                            align={colDef?.align || 'left'}
+                                        >
+                                            {colDef?.headerName ||
+                                                colDef?.fieldName}
+                                        </TableCell>
+                                    ))}
+                            </TableRow>
+                        </StyledTableHeader>
+                        <TableBody>
+                            {rowData.map((row, rowIndex) => (
+                                <StyledTableRow key={rowIndex}>
                                     {colDefs?.map((colDef) => {
                                         if (!colDef?.fieldName) {
-                                            return;
+                                            return null;
                                         }
-
+                                        const cellValue =
+                                            row[colDef.fieldName as keyof T];
                                         return (
-                                            <TableCell>
+                                            <TableCell key={uuidv4()}>
                                                 <Tooltip
-                                                    title={
-                                                        row[colDef?.fieldName]
-                                                    }
+                                                    title={String(cellValue)}
                                                     placement="right"
                                                 >
-                                                    {row[colDef?.fieldName]}
+                                                    <span>
+                                                        {String(cellValue)}
+                                                    </span>
                                                 </Tooltip>
                                             </TableCell>
                                         );
                                     })}
-                                </StyleTableRow>
-                            );
-                        })}
-                </TableBody>
-            </Table>
-        </StyledTableContainer>
+                                </StyledTableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </StyledTableContainer>
+            ) : (
+                (!isLoading || isError) && (
+                    <NoDataBox elevation={5}>
+                        <Typography variant="h4">No results</Typography>
+                    </NoDataBox>
+                )
+            )}
+        </>
     );
 };

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 
+import { NavbarItem } from '@homework-task/components/NavbarItem';
+import { StyledNavbar, StyledNavbarHeader } from '@homework-task/layout/styled';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import Looks3Icon from '@mui/icons-material/Looks3';
@@ -9,8 +11,6 @@ import LooksTwoIcon from '@mui/icons-material/LooksTwo';
 import { Box, List, Divider, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 
-import { StyledNavbar, StyledNavbarHeader } from '../layout/styled';
-import { NavbarItem } from './NavbarItem';
 import logo from '../../public/media/logo-white.svg';
 
 export const Navbar = () => {
