@@ -8,6 +8,7 @@ import {
     Path,
     UseFormRegister,
 } from 'react-hook-form';
+import { v4 as uuidv4 } from 'uuid';
 
 export const renderForm = <T extends FieldValues>(
     formDef: FormDefType[],
@@ -18,7 +19,7 @@ export const renderForm = <T extends FieldValues>(
 
     return (
         isFormDefPresent &&
-        formDef.map((field, index) => {
+        formDef.map((field) => {
             const name = field.name as Path<T>;
             const errorMessage = errors[field.name as keyof T]?.message as
                 | string
@@ -28,7 +29,7 @@ export const renderForm = <T extends FieldValues>(
                 return (
                     <TextField
                         {...register(name)}
-                        key={index}
+                        key={uuidv4()}
                         variant="outlined"
                         placeholder={field.placeholder}
                         type={field.type}
@@ -40,14 +41,15 @@ export const renderForm = <T extends FieldValues>(
                         color="primary"
                         label={field.name}
                         multiline
-                        rows={10}
+                        maxRows={10}
+                        rows={5}
                     />
                 );
             } else {
                 return (
                     <TextField
                         {...register(name)}
-                        key={index}
+                        key={uuidv4()}
                         variant="outlined"
                         placeholder={field.placeholder}
                         type={field.type}

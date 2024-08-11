@@ -3,6 +3,8 @@ import clsx from 'clsx';
 
 import { Card } from '@homework-task/components/landing/Card';
 
+import { v4 as uuidv4 } from 'uuid';
+
 // eslint-disable-next-line no-undef
 // const vscodeProjectLink = `vscode://file/${__CWD__}`;
 
@@ -111,7 +113,7 @@ export const Landing = () => {
                 )}
             >
                 {cards.map((card) => (
-                    <Card key={card.title} {...card} />
+                    <Card key={uuidv4()} {...card} />
                 ))}
             </div>
         </section>

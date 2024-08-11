@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, Box, Paper, TableContainer, TableHead, TableRow, Typography, ButtonProps, TableContainerProps } from '@mui/material';
+import { Button, Box, Paper, TableContainer, TableHead, TableRow, Typography, ButtonProps, TableContainerProps, Grid } from '@mui/material';
 import MuiDrawer from '@mui/material/Drawer';
 import { styled } from '@mui/material/styles';
 
@@ -17,6 +17,10 @@ interface StyledButtonProps extends ButtonProps {
 interface StyledTableContainerProps extends TableContainerProps {
     component?: React.ElementType;
     elevation: number;
+}
+
+interface StyledFormProps {
+    onSubmit: React.FormEventHandler<HTMLFormElement>;
 }
 
 export const StyledBackground = styled(Paper)(({ theme }) => ({
@@ -116,6 +120,19 @@ export const StyledTableRow = styled(TableRow)(() => ({
     },
 }));
 
+export const PagePanelBox = styled(Box)(() => ({
+    padding: 50,
+    flexGrow: 1,
+    backgroundColor: '#E6E6EA',
+
+    '& .MuiPaper-root': {
+        color: '#fff',
+        '& svg ': {
+            color: '#fff',
+        },
+    },
+}));
+
 export const StyledPaper = styled(Paper)(({ theme }) => ({
     padding: theme.spacing(4),
     width: '70%',
@@ -133,6 +150,22 @@ export const StyledPaper = styled(Paper)(({ theme }) => ({
         backgroundColor: '#5C62F9',
         borderRadius: '8px',
     },
+}));
+
+export const StyledForm = styled('form')<StyledFormProps>(() => ({
+    width: '100%',
+    minHeight: '50%',
+    height: '100%',
+    borderRadius: '5px',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    gap: '20px',
+}));
+
+export const StyledGridLayout = styled(Grid)(() => ({
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
 }));
 
 // No data

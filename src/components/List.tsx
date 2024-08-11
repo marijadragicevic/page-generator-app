@@ -49,9 +49,9 @@ export const List = <T extends Record<string, string | number>>({
                         <StyledTableHeader>
                             <TableRow>
                                 {colDefs?.length > 0 &&
-                                    colDefs.map((colDef, index) => (
+                                    colDefs.map((colDef) => (
                                         <TableCell
-                                            key={index}
+                                            key={uuidv4()}
                                             align={colDef?.align || 'left'}
                                         >
                                             {colDef?.headerName ||
@@ -61,8 +61,8 @@ export const List = <T extends Record<string, string | number>>({
                             </TableRow>
                         </StyledTableHeader>
                         <TableBody>
-                            {rowData.map((row, rowIndex) => (
-                                <StyledTableRow key={rowIndex}>
+                            {rowData.map((row) => (
+                                <StyledTableRow key={uuidv4()}>
                                     {colDefs?.map((colDef) => {
                                         if (!colDef?.fieldName) {
                                             return null;

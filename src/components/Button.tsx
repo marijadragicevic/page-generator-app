@@ -1,6 +1,7 @@
-import clsx from 'clsx';
 import React from 'react';
+
 import { ButtonProps } from '@homework-task/types/interfaces';
+import clsx from 'clsx';
 
 export const Button = ({ children, onClick, className }: ButtonProps) => {
     return (

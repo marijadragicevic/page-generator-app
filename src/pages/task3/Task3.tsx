@@ -3,7 +3,12 @@ import React from 'react';
 import { addNewPost } from '@homework-task/api/api';
 import { CreateForm } from '@homework-task/components/CreateForm';
 import { DefaultLayout } from '@homework-task/layout/DefaultLayout';
-import { StyledBackground } from '@homework-task/layout/styled';
+import {
+    Accent,
+    StyledBackground,
+    StyledHeader,
+    TextBackground,
+} from '@homework-task/layout/styled';
 import { FormDefType } from '@homework-task/types/interfaces';
 import { renderForm } from '@homework-task/util/util';
 import { z } from 'zod';
@@ -39,7 +44,13 @@ type ValidationSchemaType = z.infer<typeof validationSchema>;
 export const Task3 = () => {
     return (
         <DefaultLayout>
-            <StyledBackground>
+            <StyledBackground sx={{ flexDirection: 'column' }}>
+                <TextBackground elevation={5}>
+                    <StyledHeader variant="h4">
+                        <Accent>#3</Accent>
+                        Generate form component
+                    </StyledHeader>
+                </TextBackground>
                 <CreateForm<ValidationSchemaType>
                     validationSchema={validationSchema}
                     onSubmit={addNewPost}

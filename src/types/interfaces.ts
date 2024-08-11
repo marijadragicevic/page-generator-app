@@ -35,7 +35,7 @@ export interface ItemShowcaseProps {
 export interface CardDetailsType extends ItemShowcaseType {
     image: string;
     background?: string;
-    onClick?: MouseEventHandler; // Made optional
+    onClick?: MouseEventHandler;
     buttonText: string;
 }
 
@@ -44,9 +44,13 @@ export interface CardsProps {
     cards: CardDetailsType[];
 }
 
+export interface TrustBarProps {
+    images: string[];
+}
+
 // Props for a button component
 export interface ButtonProps {
-    children: ReactNode;
+    children?: string;
     onClick: MouseEventHandler;
     className?: string;
 }
@@ -60,7 +64,7 @@ export interface CardType {
 
 // Props for a layout component
 export interface LayoutProps {
-    children: ReactNode;
+    children?: ReactNode;
     background: string;
 }
 
@@ -114,4 +118,36 @@ export interface CreateFormProps<T extends FieldValues> {
         register: UseFormRegister<T>,
         errors: FieldErrors<T>
     ) => React.ReactNode;
+}
+
+// Updated ComponentProps with correct types
+export type ComponentProps =
+    | { type: 'heroComponent'; props: HeroProps }
+    | { type: 'cardComponent'; props: CardType }
+    | { type: 'trustbarComponent'; props: TrustBarProps }
+    | { type: 'buttonComponent'; props: ButtonProps }
+    | { type: 'cardsComponent'; props: CardsProps }
+    | { type: 'panelComponent'; props: PanelProps }
+    | { type: 'itemShowcaseComponent'; props: ItemShowcaseProps };
+
+// Updated PageSectionType to match data structure
+export type PageSectionType =
+    | {
+        type: 'sectionLayout';
+        props: LayoutProps;
+        components: ComponentProps[];
+    }
+    | {
+        type: 'sectionGridLayout';
+        props: LayoutProps;
+        components: ComponentProps[];
+    };
+
+// PageComponentProps and PageGeneratorProps definitions
+export interface PageComponentProps {
+    component: ComponentProps;
+}
+
+export interface PageGeneratorProps {
+    sections: PageSectionType[];
 }

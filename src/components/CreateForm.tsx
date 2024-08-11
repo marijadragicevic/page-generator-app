@@ -2,7 +2,11 @@ import React from 'react';
 
 import { Loading } from '@homework-task/components/Loading';
 import { useAsyncService } from '@homework-task/hooks/useAsyncService';
-import { StyledButton, StyledPaper } from '@homework-task/layout/styled';
+import {
+    StyledButton,
+    StyledForm,
+    StyledPaper,
+} from '@homework-task/layout/styled';
 import { CreateFormProps } from '@homework-task/types/interfaces';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, FieldValues } from 'react-hook-form';
@@ -27,18 +31,11 @@ export const CreateForm = <T extends FieldValues>({
     };
 
     return (
-        <StyledPaper>
-            <form
-                style={{
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '20px',
-                }}
-                onSubmit={handleSubmit(handleFormSubmit)}
-            >
+        <StyledPaper
+            elevation={5}
+            sx={{ height: 'auto', minHeight: '50%', maxHeight: '80%' }}
+        >
+            <StyledForm onSubmit={handleSubmit(handleFormSubmit)}>
                 {renderForm(register, errors)}
                 <StyledButton
                     type="submit"
@@ -47,7 +44,7 @@ export const CreateForm = <T extends FieldValues>({
                 >
                     {isLoading ? <Loading /> : 'Submit'}
                 </StyledButton>
-            </form>
+            </StyledForm>
         </StyledPaper>
     );
 };

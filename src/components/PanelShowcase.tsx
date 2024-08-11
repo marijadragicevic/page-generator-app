@@ -2,6 +2,7 @@ import React from 'react';
 
 import { PanelProps } from '@homework-task/types/interfaces';
 import clsx from 'clsx';
+import { v4 as uuidv4 } from 'uuid';
 
 export const PanelShowcase = ({ items }: PanelProps) => {
     return (
@@ -18,7 +19,7 @@ export const PanelShowcase = ({ items }: PanelProps) => {
             >
                 {items.map(({ title, description, image }) => (
                     <div
-                        key={title}
+                        key={uuidv4()}
                         className={clsx(
                             'flex',
                             'flex-col',

@@ -1,7 +1,9 @@
 import React from 'react';
-import clsx from 'clsx';
+
 import { Button } from '@homework-task/components/Button';
 import { CardDetailsType, CardsProps } from '@homework-task/types/interfaces';
+import clsx from 'clsx';
+import { v4 as uuidv4 } from 'uuid';
 
 export const Cards = ({ cards }: CardsProps) => {
     return (
@@ -17,7 +19,7 @@ export const Cards = ({ cards }: CardsProps) => {
                         buttonText,
                     }: CardDetailsType) => (
                         <div
-                            key={title}
+                            key={uuidv4()}
                             className={clsx('rounded-md', 'p-8', background)}
                         >
                             <img src={image} alt="Icon" width="120" />
