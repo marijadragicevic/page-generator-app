@@ -16,11 +16,11 @@ export const getUserList = async (): Promise<GetUserListResponse> => {
 };
 
 export const addNewPost = async (
-    body: PostBodyType
+    data: PostBodyType
 ): Promise<AddNewPostResponse> => {
     return await axiosInstance({
         url: '/posts',
         method: 'POST',
-        data: body,
+        data: data,
     });
 };

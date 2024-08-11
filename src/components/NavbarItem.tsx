@@ -1,6 +1,7 @@
 import React, { MouseEventHandler } from 'react';
 
 import {
+    IconTypeMap,
     ListItem,
     ListItemButton,
     ListItemIcon,
@@ -14,7 +15,7 @@ export const NavbarItem = ({
     onClick,
 }: {
     open: boolean;
-    icon: any;
+    icon: JSX.Element;
     title: string;
     onClick: MouseEventHandler;
 }) => {

@@ -1,6 +1,8 @@
 import { MouseEventHandler, ReactNode } from 'react';
 
 import { AxiosResponse } from 'axios';
+import { UseFormRegister, FieldErrors, FieldValues } from 'react-hook-form';
+import { ZodSchema } from 'zod';
 
 // Interface for basic hero properties
 export interface HeroProps {
@@ -33,7 +35,7 @@ export interface ItemShowcaseProps {
 export interface CardDetailsType extends ItemShowcaseType {
     image: string;
     background?: string;
-    onClick?: MouseEventHandler;
+    onClick?: MouseEventHandler; // Made optional
     buttonText: string;
 }
 
@@ -96,4 +98,20 @@ export interface UserType {
     email: string;
     phone: string;
     [key: string]: string | number;
+}
+
+// Interface for user type
+export interface FormDefType {
+    name: string;
+    type: string;
+    placeholder: string;
+}
+
+export interface CreateFormProps<T extends FieldValues> {
+    validationSchema: ZodSchema<T>;
+    onSubmit: (data: T) => Promise<AxiosResponse<T>>;
+    renderForm: (
+        register: UseFormRegister<T>,
+        errors: FieldErrors<T>
+    ) => React.ReactNode;
 }

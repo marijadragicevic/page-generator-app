@@ -84,7 +84,9 @@ export const StyledButton = styled(Button)<StyledButtonProps>(() => ({
     },
 }));
 
-export const StyledTableContainer = styled(TableContainer)<StyledTableContainerProps>(() => ({
+export const StyledTableContainer = styled(
+    TableContainer
+)<StyledTableContainerProps>(() => ({
     '&::-webkit-scrollbar': {
         width: '5px',
         height: '5px',
@@ -111,6 +113,25 @@ export const StyledTableRow = styled(TableRow)(() => ({
     },
     '&:last-child td, &:last-child th': {
         border: 0,
+    },
+}));
+
+export const StyledPaper = styled(Paper)(({ theme }) => ({
+    padding: theme.spacing(4),
+    width: '70%',
+    height: '80%',
+    overflow: 'auto',
+
+    '&::-webkit-scrollbar': {
+        width: '5px',
+        height: '5px',
+    },
+    '&::-webkit-scrollbar-track': {
+        backgroundColor: '#F2F3F5',
+    },
+    '&::-webkit-scrollbar-thumb': {
+        backgroundColor: '#5C62F9',
+        borderRadius: '8px',
     },
 }));
 

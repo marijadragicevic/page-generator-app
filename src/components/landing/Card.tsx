@@ -1,6 +1,7 @@
 import React from 'react';
-import clsx from 'clsx';
+
 import { CardType } from '@homework-task/types/interfaces';
+import clsx from 'clsx';
 
 export const Card = ({ title, text, link }: CardType) => (
     <div
