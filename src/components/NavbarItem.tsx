@@ -1,7 +1,6 @@
 import React, { MouseEventHandler } from 'react';
 
 import {
-    IconTypeMap,
     ListItem,
     ListItemButton,
     ListItemIcon,
