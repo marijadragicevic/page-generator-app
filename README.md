@@ -5,7 +5,7 @@ Follow these steps to set up and run the project:
 ### 1.Clone the Repository
 
 -Open your command prompt or terminal and run the following command to clone the project:
-git clone https://github.com/marijadragicevic/marija-dragicevic-fatcat-task.git
+git clone https://github.com/marijadragicevic/page-generator-app.git
 
 ### 2.Navigate to the Project Directory
 
