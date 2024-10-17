@@ -10,7 +10,7 @@ git clone https://github.com/marijadragicevic/page-generator-app.git
 ### 2.Navigate to the Project Directory
 
 -Change to the project directory:
-cd marija-dragicevic-fatcat-task/
+cd page-generator-app/
 
 ### 3.Install Dependencies
 
