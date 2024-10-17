@@ -38,7 +38,7 @@ export const Task1 = () => {
                     <StyledButton
                         variant="contained"
                         size="large"
-                        href="https://github.com/marijadragicevic/marija-dragicevic-fatcat-task"
+                        href="https://github.com/marijadragicevic/page-generator-app"
                         target="_blank"
                     >
                         View source code
