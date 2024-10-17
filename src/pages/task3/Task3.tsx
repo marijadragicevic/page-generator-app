@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { z } from 'zod';
+
 import { addNewPost } from '@homework-task/api/api';
 import { CreateForm } from '@homework-task/components/CreateForm';
 import { DefaultLayout } from '@homework-task/layout/DefaultLayout';
@@ -11,7 +13,6 @@ import {
 } from '@homework-task/layout/styled';
 import { FormDefType } from '@homework-task/types/interfaces';
 import { renderForm } from '@homework-task/util/util';
-import { z } from 'zod';
 
 const formDef: FormDefType[] = [
     {

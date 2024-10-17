@@ -1,14 +1,5 @@
 import React, { useEffect } from 'react';
 
-import { Loading } from '@homework-task/components/Loading';
-import { useAsyncService } from '@homework-task/hooks/useAsyncService';
-import {
-    NoDataBox,
-    StyledTableContainer,
-    StyledTableHeader,
-    StyledTableRow,
-} from '@homework-task/layout/styled';
-import { ListProps } from '@homework-task/types/interfaces';
 import {
     Paper,
     Table,
@@ -19,6 +10,16 @@ import {
     Typography,
 } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
+
+import { Loading } from '@homework-task/components/Loading';
+import { useAsyncService } from '@homework-task/hooks/useAsyncService';
+import {
+    NoDataBox,
+    StyledTableContainer,
+    StyledTableHeader,
+    StyledTableRow,
+} from '@homework-task/layout/styled';
+import { ListProps } from '@homework-task/types/interfaces';
 
 export const List = <T extends Record<string, string | number>>({
     colDefs,
@@ -33,8 +34,8 @@ export const List = <T extends Record<string, string | number>>({
     } = useAsyncService<T[]>();
 
     useEffect(() => {
-        fetchData(getList);
-    }, []);
+        void fetchData(getList);
+    }, [fetchData, getList]);
 
     return (
         <>

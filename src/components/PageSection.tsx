@@ -1,10 +1,11 @@
 import React from 'react';
 
+import { v4 as uuidv4 } from 'uuid';
+
 import { GridLayout } from '@homework-task/components/GridLayout';
 import { Layout } from '@homework-task/components/Layout';
 import { PageComponent } from '@homework-task/components/PageComponent';
 import { PageSectionType } from '@homework-task/types/interfaces';
-import { v4 as uuidv4 } from 'uuid';
 
 export const PageSection = ({ section }: { section: PageSectionType }) => {
     const renderSection = (section: PageSectionType) => {

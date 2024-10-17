@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { Button } from '@homework-task/components/Button';
-import { CardDetailsType, CardsProps } from '@homework-task/types/interfaces';
 import clsx from 'clsx';
 import { v4 as uuidv4 } from 'uuid';
+
+import { Button } from '@homework-task/components/Button';
+import { CardDetailsType, CardsProps } from '@homework-task/types/interfaces';
 
 export const Cards = ({ cards }: CardsProps) => {
     return (

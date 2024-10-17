@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Grid } from '@mui/material';
+
 import { DefaultLayout } from '@homework-task/layout/DefaultLayout';
 import {
     Accent,
@@ -9,7 +11,6 @@ import {
     StyledHeader,
     TextBackground,
 } from '@homework-task/layout/styled';
-import { Grid } from '@mui/material';
 
 export const Task1 = () => {
     return (
@@ -19,15 +20,19 @@ export const Task1 = () => {
                     <TextBackground elevation={5}>
                         <StyledHeader variant="h4">
                             <Accent>#1</Accent>
-                            Transfer the project to TypeScript
+                            About the project
                         </StyledHeader>
 
                         <StyledDescription variant="body1">
-                            Hi! Whole project is translated to TypeScript. Here
-                            you can find a link to the GitHub repo of the
-                            project. There will be present{' '}
-                            <Accent>README.md</Accent> file with more details
-                            about tasks.
+                            Hi! Welcome to my Page Generator App. This app is
+                            developed using React.js and TypeScript, following
+                            ESLint and Prettier rules, and utilizing import
+                            aliases for better code readability. The app focuses
+                            on creating scalable and reusable components that
+                            are later used for building the page UI. You can
+                            find a link to the GitHub repository of the project
+                            below. The <Accent>README.md</Accent> file will
+                            provide more details about the project.
                         </StyledDescription>
                     </TextBackground>
                     <StyledButton

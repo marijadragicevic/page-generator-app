@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
 
-import { NavbarItem } from '@homework-task/components/NavbarItem';
-import { StyledNavbar, StyledNavbarHeader } from '@homework-task/layout/styled';
+import AutoFixHighIcon from '@mui/icons-material/AutoFixHigh';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import Looks3Icon from '@mui/icons-material/Looks3';
-import Looks4Icon from '@mui/icons-material/Looks4';
-import LooksOneIcon from '@mui/icons-material/LooksOne';
-import LooksTwoIcon from '@mui/icons-material/LooksTwo';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
+import HomeIcon from '@mui/icons-material/Home';
 import { Box, List, Divider, IconButton } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+
+import { NavbarItem } from '@homework-task/components/NavbarItem';
+import { StyledNavbar, StyledNavbarHeader } from '@homework-task/layout/styled';
 
 import logo from '../../public/media/logo-white.svg';
 
@@ -37,26 +38,26 @@ export const Navbar = () => {
             <List>
                 <NavbarItem
                     open={open}
-                    icon={<LooksOneIcon />}
-                    title="Task 1"
+                    icon={<HomeIcon />}
+                    title="Home"
                     onClick={() => navigate('/')}
                 />
                 <NavbarItem
                     open={open}
-                    icon={<LooksTwoIcon />}
-                    title="Task 2"
+                    icon={<FormatListBulletedIcon />}
+                    title="List"
                     onClick={() => navigate('/list-task')}
                 />
                 <NavbarItem
                     open={open}
-                    icon={<Looks3Icon />}
-                    title="Task 3"
+                    icon={<AutoFixHighIcon />}
+                    title="Form"
                     onClick={() => navigate('/form-task')}
                 />
                 <NavbarItem
                     open={open}
-                    icon={<Looks4Icon />}
-                    title="Task 4"
+                    icon={<DashboardIcon />}
+                    title="Page Generator"
                     onClick={() => navigate('/page-ui-task')}
                 />
             </List>

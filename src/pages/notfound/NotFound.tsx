@@ -1,8 +1,9 @@
 import React from 'react';
 
+import { Typography } from '@mui/material';
+
 import { DefaultLayout } from '@homework-task/layout/DefaultLayout';
 import { NoDataBox, StyledBackground } from '@homework-task/layout/styled';
-import { Typography } from '@mui/material';
 
 export const NotFound = () => {
     return (

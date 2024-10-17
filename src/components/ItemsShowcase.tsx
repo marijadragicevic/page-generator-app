@@ -1,7 +1,8 @@
 import React from 'react';
 
-import { ItemShowcaseProps } from '@homework-task/types/interfaces';
 import { v4 as uuidv4 } from 'uuid';
+
+import { ItemShowcaseProps } from '@homework-task/types/interfaces';
 
 export const ItemsShowcase = ({ items }: ItemShowcaseProps) => {
     return (

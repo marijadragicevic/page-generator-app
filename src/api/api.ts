@@ -1,5 +1,6 @@
-import { PostBodyType, UserType } from '@homework-task/types/interfaces';
 import axios, { AxiosResponse } from 'axios';
+
+import { PostBodyType, UserType } from '@homework-task/types/interfaces';
 
 export const axiosInstance = axios.create({
     baseURL: 'https://jsonplaceholder.typicode.com',

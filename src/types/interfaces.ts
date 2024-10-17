@@ -133,15 +133,15 @@ export type ComponentProps =
 // Updated PageSectionType to match data structure
 export type PageSectionType =
     | {
-        type: 'sectionLayout';
-        props: LayoutProps;
-        components: ComponentProps[];
-    }
+          type: 'sectionLayout';
+          props: LayoutProps;
+          components: ComponentProps[];
+      }
     | {
-        type: 'sectionGridLayout';
-        props: LayoutProps;
-        components: ComponentProps[];
-    };
+          type: 'sectionGridLayout';
+          props: LayoutProps;
+          components: ComponentProps[];
+      };
 
 // PageComponentProps and PageGeneratorProps definitions
 export interface PageComponentProps {

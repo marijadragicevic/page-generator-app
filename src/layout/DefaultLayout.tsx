@@ -1,8 +1,9 @@
 import React, { ReactNode } from 'react';
 
+import { Grid } from '@mui/material';
+
 import { Navbar } from '@homework-task/components/Navbar';
 import { PagePanel } from '@homework-task/components/PagePanel';
-import { Grid } from '@mui/material';
 
 export const DefaultLayout: React.FC<{
     children?: ReactNode;

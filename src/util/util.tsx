@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { FormDefType } from '@homework-task/types/interfaces';
 import { TextField } from '@mui/material';
 import {
     FieldErrors,
@@ -9,6 +8,8 @@ import {
     UseFormRegister,
 } from 'react-hook-form';
 import { v4 as uuidv4 } from 'uuid';
+
+import { FormDefType } from '@homework-task/types/interfaces';
 
 export const renderForm = <T extends FieldValues>(
     formDef: FormDefType[],

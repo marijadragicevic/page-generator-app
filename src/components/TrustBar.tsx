@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { TrustBarProps } from '@homework-task/types/interfaces';
 import Marquee from 'react-fast-marquee';
 import { v4 as uuidv4 } from 'uuid';
+
+import { TrustBarProps } from '@homework-task/types/interfaces';
 
 export const TrustBar = ({ images }: TrustBarProps) => {
     return (

@@ -1,5 +1,8 @@
 import React from 'react';
 
+import { zodResolver } from '@hookform/resolvers/zod';
+import { useForm, FieldValues } from 'react-hook-form';
+
 import { Loading } from '@homework-task/components/Loading';
 import { useAsyncService } from '@homework-task/hooks/useAsyncService';
 import {
@@ -8,8 +11,6 @@ import {
     StyledPaper,
 } from '@homework-task/layout/styled';
 import { CreateFormProps } from '@homework-task/types/interfaces';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, FieldValues } from 'react-hook-form';
 
 export const CreateForm = <T extends FieldValues>({
     validationSchema,
@@ -35,7 +36,12 @@ export const CreateForm = <T extends FieldValues>({
             elevation={5}
             sx={{ height: 'auto', minHeight: '50%', maxHeight: '80%' }}
         >
-            <StyledForm onSubmit={handleSubmit(handleFormSubmit)}>
+            <StyledForm
+                onSubmit={(e) => {
+                    const response = handleSubmit(handleFormSubmit);
+                    void response(e);
+                }}
+            >
                 {renderForm(register, errors)}
                 <StyledButton
                     type="submit"

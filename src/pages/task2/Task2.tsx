@@ -6,6 +6,7 @@ import { DefaultLayout } from '@homework-task/layout/DefaultLayout';
 import {
     Accent,
     StyledBackgroundLight,
+    StyledDescription,
     StyledHeader,
     TextBackground,
 } from '@homework-task/layout/styled';

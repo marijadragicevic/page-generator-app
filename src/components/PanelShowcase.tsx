@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { PanelProps } from '@homework-task/types/interfaces';
 import clsx from 'clsx';
 import { v4 as uuidv4 } from 'uuid';
+
+import { PanelProps } from '@homework-task/types/interfaces';
 
 export const PanelShowcase = ({ items }: PanelProps) => {
     return (

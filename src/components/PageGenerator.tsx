@@ -1,9 +1,10 @@
 import React from 'react';
 
-import { PageSection } from '@homework-task/components/PageSection';
-import { PageGeneratorProps } from '@homework-task/types/interfaces';
 import { Grid } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
+
+import { PageSection } from '@homework-task/components/PageSection';
+import { PageGeneratorProps } from '@homework-task/types/interfaces';
 
 export const PageGenerator = ({ sections }: PageGeneratorProps) => {
     return (

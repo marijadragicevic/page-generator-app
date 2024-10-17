@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { AxiosResponse } from 'axios';
 
@@ -9,7 +9,7 @@ export const useAsyncService = <T>() => {
     const [isError, setIsError] = useState(false);
     const [data, setData] = useState<T | undefined>(undefined);
 
-    const fetchData = async (request: RequestFunction<T>) => {
+    const fetchData = useCallback(async (request: RequestFunction<T>) => {
         try {
             setIsLoading(true);
             const response = await request();
@@ -19,7 +19,7 @@ export const useAsyncService = <T>() => {
             setIsLoading(false);
             setIsError(true);
         }
-    };
+    }, []);
 
     return { isLoading, isError, data, fetchData };
 };
