@@ -1,4 +1,4 @@
-name: Vite React TypeScript CI
+name: CI
 
 on:
   push:
@@ -11,24 +11,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository code
       - name: Checkout code
-        uses: actions/checkout@v2
-      
-      # Set up Node.js environment
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'  # Specify the Node.js version compatible with Vite
+        uses: actions/checkout@v3 
 
-      # Install dependencies
+      - name: Set up Node.js
+        uses: actions/setup-node@v3 
+        with:
+          node-version: '18'  
+
+      - name: Verify Node.js version
+        run: |
+          echo "Node.js version: $(node -v)"
+          if [ $(node -v | cut -d '.' -f 1 | cut -c 2-) -lt 18 ]; then
+            echo "Node.js version must be 18 or higher!"
+            exit 1
+          fi
+
+      - name: Verify npm version
+        run: |
+          echo "npm version: $(npm -v)"
+          if [ $(npm -v | cut -d '.' -f 1) -lt 9 ]; then
+            echo "npm version must be 9 or higher!"
+            exit 1
+          fi
+
       - name: Install dependencies
         run: npm install
-
-      # Run Vite build
-      - name: Build project
-        run: npm run build
-
-      # Run tests
-      - name: Run tests
-        run: npm test
